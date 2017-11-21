@@ -19,6 +19,8 @@ function unhog {
 
     targets=${@:-$default_targets}
 
+    ram_before=$(mem_free)
+
     # echo "System targets: $system_targets"
     # echo "Built-in targets: $builtin_targets"
     # echo "Default targets: $default_targets"
@@ -28,4 +30,9 @@ function unhog {
         echo "Killing $target..."
         taskkill -f -im "$target*" > /dev/null
     done
+
+    ram_after=$(mem_free)
+
+    echo "Free memory: $((ram_before/1024)) kB -> $((ram_after/1024)) kB"
+    echo "Gained memory:" $(( (100*$ram_after)/$ram_before - 100 )) "%"
 }

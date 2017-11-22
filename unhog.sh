@@ -5,6 +5,10 @@
 # the TO_UNHOG environment variable.
 
 # Usage:
+#   unhog (targets...)
+#   (targets...) is optional, and can be multiple targets
+
+# Usage examples:
 #   Kill default targets: 
 #       unhog
 #   Kill firefox:
